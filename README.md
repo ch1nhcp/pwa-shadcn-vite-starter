@@ -47,6 +47,7 @@ on:
 - [shadcn-ui](https://github.com/shadcn-ui/ui/)
 - [react-router-dom](https://www.npmjs.com/package/react-router-dom)
 - [Zustand](https://github.com/pmndrs/zustand) for state management
+- [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) for form validation
 - PWA support with service worker and offline detection
 
 ## Project Structure
