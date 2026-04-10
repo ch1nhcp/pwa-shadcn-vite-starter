@@ -46,6 +46,9 @@ on:
 - Tailwind CSS
 - [shadcn-ui](https://github.com/shadcn-ui/ui/)
 - [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [Zustand](https://github.com/pmndrs/zustand) for state management
+- [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) for form validation
+- PWA support with service worker and offline detection
 
 ## Project Structure
 
@@ -54,9 +57,10 @@ react-shadcn-starter/
 ├── public/            # Public assets
 ├── src/               # Application source code
 │   ├── components/    # React components
-│   ├── context/       # contexts components
+│   ├── contexts/      # React context providers
 │   ├── config/        # Config data
-│   ├── hook/          # Custom hooks
+│   ├── hooks/         # Custom hooks
+│   ├── stores/        # Zustand stores
 │   ├── lib/           # Utility functions
 │   ├── pages/         # pages/features components
 │   ├── App.tsx        # Application entry point
