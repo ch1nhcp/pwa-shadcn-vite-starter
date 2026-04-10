@@ -1,0 +1,5 @@
+<svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" rx="0" fill="#0F172A"/>
+  <rect x="16" y="16" width="160" height="160" rx="56" fill="#0F172A" stroke="#1E293B" stroke-width="2"/>
+  <text x="96" y="116" font-family="system-ui, sans-serif" font-size="80" font-weight="bold" fill="white" text-anchor="middle">P</text>
+</svg>

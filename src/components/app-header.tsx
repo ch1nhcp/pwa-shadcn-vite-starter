@@ -16,6 +16,7 @@ import { Button, buttonVariants } from './ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { appConfig, baseUrl } from '@/config/app'
 import GitHub from './icons/github'
+import { PWAInstallButton } from './pwa-install-prompt'
 
 export function AppHeader() {
     const location = useLocation()
@@ -81,7 +82,8 @@ export function AppHeader() {
                             ))}
                         </nav>
                     </div>
-                    <nav className="flex gap-1">
+                    <nav className="flex items-center gap-1">
+                        <PWAInstallButton />
                         <a
                             href={appConfig.github.url}
                             title={appConfig.github.title}
