@@ -2,7 +2,8 @@ import {
     CircleAlert,
     Files,
     Gauge,
-    LucideIcon
+    LucideIcon,
+    Smartphone,
 } from 'lucide-react'
 
 type MenuItemType = {
@@ -38,6 +39,11 @@ export const mainMenu: MenuType = [
                 url: '/pages/feature',
             },
         ]
+    },
+    {
+        title: 'PWA Status',
+        url: '/pages/pwa',
+        icon: Smartphone,
     },
     {
         title: 'Error',

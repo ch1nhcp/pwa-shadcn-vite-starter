@@ -2,6 +2,7 @@ import { BrowserRouter, HashRouter } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { PWAUpdatePrompt } from './components/pwa-update-prompt'
 import { PWAOfflineIndicator } from './components/pwa-offline-indicator'
+import { PWAInstallBanner } from './components/pwa-install-banner'
 import Router from './Router'
 
 const AppRouter = import.meta.env.VITE_USE_HASH_ROUTE === 'true' ? HashRouter : BrowserRouter
@@ -12,6 +13,7 @@ export default function App() {
             <AppRouter>
                 <Router />
             </AppRouter>
+            <PWAInstallBanner />
             <PWAUpdatePrompt />
             <PWAOfflineIndicator />
         </ThemeProvider>

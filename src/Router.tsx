@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard'
 import Sample from './pages/Sample'
 import ComingSoon from './pages/ComingSoon'
 import ContactForm from './pages/ContactForm'
+import PWAStatus from './pages/PWAStatus'
 
 export default function Router() {
     return (
@@ -15,6 +16,7 @@ export default function Router() {
                     <Route path="sample" element={<Sample />} />
                     <Route path="contact" element={<ContactForm />} />
                     <Route path="feature" element={<ComingSoon />} />
+                    <Route path="pwa" element={<PWAStatus />} />
                 </Route>
                 <Route path="*" element={<NotMatch />} />
             </Route>

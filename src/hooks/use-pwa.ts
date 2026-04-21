@@ -1,4 +1,7 @@
+import { useCallback } from "react"
 import { useRegisterSW } from "virtual:pwa-register/react"
+
+export type SWStatus = "installing" | "waiting" | "active" | "unknown"
 
 export function usePWA() {
   const {
@@ -6,10 +9,7 @@ export function usePWA() {
     offlineReady: [offlineReady, setOfflineReady],
     updateServiceWorker,
   } = useRegisterSW({
-    onRegisteredSW(swUrl, registration) {
-      console.log(`Service Worker registered: ${swUrl}`)
-
-      // Check for updates every hour
+    onRegisteredSW(_swUrl, registration) {
       if (registration) {
         setInterval(() => {
           registration.update()
@@ -21,10 +21,10 @@ export function usePWA() {
     },
   })
 
-  function close() {
+  const close = useCallback(() => {
     setOfflineReady(false)
     setNeedRefresh(false)
-  }
+  }, [setOfflineReady, setNeedRefresh])
 
   return {
     needRefresh,
