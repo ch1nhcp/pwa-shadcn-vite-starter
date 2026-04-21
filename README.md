@@ -1,77 +1,82 @@
-# React Shadcn Starter
+# PWA Shadcn Vite Starter
 
-React + Vite + TypeScript template for building apps with shadcn/ui.
+A production-ready React starter template with PWA support, shadcn/ui components, and a full state/form management stack.
 
 ## Getting Started
 
 ```bash
-npx degit hayyi2/react-shadcn-starter my-project
+npx degit ch1nhcp/pwa-shadcn-vite-starter my-project
 cd my-project
 npm install
 npm run dev
 ```
 
-## Getting Done
-
-- [x] Single page app with navigation and responsif layout
-- [x] Customable configuration `/config`
-- [x] Simple starting page/feature `/pages`
-- [x] Github action deploy github pages
-
-## Deploy `gh-pages`
-
-- change `basenameProd` in `/vite.config.ts`
-- create deploy key `GITHUB_TOKEN` in github `/settings/keys`
-- commit and push changes code
-- setup gihub pages to branch `gh-pages`
-- run action `Build & Deploy`
-
-### Auto Deploy
-
-- change file `.github/workflows/build-and-deploy.yml`
-- Comment on `workflow_dispatch`
-- Uncomment on `push`
-
-```yaml
-# on:
-#   workflow_dispatch:
-on:
-  push:
-    branches: ["main"]
-```
-
 ## Features
 
-- React + Vite + TypeScript
-- Tailwind CSS
-- [shadcn-ui](https://github.com/shadcn-ui/ui/)
-- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
-- [Zustand](https://github.com/pmndrs/zustand) for state management
-- [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) for form validation
-- PWA support with service worker and offline detection
+- **React 19** + **Vite 6** + **TypeScript**
+- **Tailwind CSS v4** — utility-first styling
+- **[shadcn/ui](https://ui.shadcn.com/)** — accessible, composable component library
+- **[react-router-dom v7](https://reactrouter.com/)** — client-side routing
+- **[Zustand v5](https://github.com/pmndrs/zustand)** — lightweight async state management
+- **[React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)** — type-safe form validation
+- **PWA support** via `vite-plugin-pwa` — service worker, offline detection, install prompt, update prompt
+- **Dark/light mode** via ThemeContext
+- Responsive sidebar layout with mobile support
 
 ## Project Structure
 
-```md
-react-shadcn-starter/
-├── public/            # Public assets
-├── src/               # Application source code
-│   ├── components/    # React components
-│   ├── contexts/      # React context providers
-│   ├── config/        # Config data
-│   ├── hooks/         # Custom hooks
-│   ├── stores/        # Zustand stores
-│   ├── lib/           # Utility functions
-│   ├── pages/         # pages/features components
-│   ├── App.tsx        # Application entry point
-│   ├── index.css      # Main css and tailwind configuration
-│   ├── main.tsx       # Main rendering file
-│   └── Router.tsx     # Routes component
-├── index.html         # HTML entry point
-├── tsconfig.json      # TypeScript configuration
-└── vite.config.ts     # Vite configuration
+```
+pwa-shadcn-vite-starter/
+├── public/                   # Static assets and PWA icons
+├── src/
+│   ├── components/           # Shared UI components
+│   │   ├── ui/               # shadcn/ui primitives
+│   │   ├── pwa-install-prompt.tsx
+│   │   ├── pwa-offline-indicator.tsx
+│   │   └── pwa-update-prompt.tsx
+│   ├── contexts/             # React context providers (ThemeContext)
+│   ├── config/               # App and menu configuration
+│   ├── hooks/                # Custom hooks (PWA, mobile, online status)
+│   ├── stores/               # Zustand stores
+│   ├── lib/                  # Utility functions
+│   ├── pages/                # Route-level page components
+│   ├── App.tsx               # Root app component
+│   ├── Router.tsx            # Route definitions
+│   ├── main.tsx              # Entry point
+│   └── index.css             # Global styles and Tailwind config
+├── index.html
+├── tsconfig.json
+└── vite.config.ts
+```
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Type-check and build for production |
+| `npm run preview` | Preview production build locally |
+| `npm run build:gh` | Build for GitHub Pages deployment |
+| `npm run lint` | Run ESLint |
+
+## Deploy to GitHub Pages
+
+1. Set `VITE_BASE_URL` in `vite.config.ts` to your repo path (e.g. `/pwa-shadcn-vite-starter/`)
+2. Add a `GITHUB_TOKEN` deploy key in your repo settings
+3. Push changes — the `Build & Deploy` action will run
+
+### Enable Auto Deploy on Push
+
+In `.github/workflows/build-and-deploy.yml`, swap the trigger:
+
+```yaml
+on:
+  push:
+    branches: ["main"]
+# on:
+#   workflow_dispatch:
 ```
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/hayyi2/react-shadcn-starter/blob/main/LICENSE) file for details.
+MIT
