@@ -6,6 +6,7 @@ import Sample from './pages/Sample'
 import ComingSoon from './pages/ComingSoon'
 import ContactForm from './pages/ContactForm'
 import PWAStatus from './pages/PWAStatus'
+import DesignSystem from './pages/DesignSystem'
 
 export default function Router() {
     return (
@@ -17,6 +18,7 @@ export default function Router() {
                     <Route path="contact" element={<ContactForm />} />
                     <Route path="feature" element={<ComingSoon />} />
                     <Route path="pwa" element={<PWAStatus />} />
+                    <Route path="design-system" element={<DesignSystem />} />
                 </Route>
                 <Route path="*" element={<NotMatch />} />
             </Route>
