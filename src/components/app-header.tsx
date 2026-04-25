@@ -17,6 +17,7 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { appConfig, baseUrl } from '@/config/app'
 import GitHub from './icons/github'
 import { PWAInstallButton } from './pwa-install-prompt'
+import { ModeToggle } from './mode-toggle'
 
 export function AppHeader() {
     const location = useLocation()
@@ -42,8 +43,8 @@ export function AppHeader() {
                                                 key={index}
                                                 to={item.url}
                                                 className={({ isActive }) => cn(
-                                                    "flex items-center gap-2 overflow-hidden rounded-md p-2.5 text-left text-sm outline-none transition-[width,height,padding] hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 active:bg-accent active:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>svg]:size-4",
-                                                    "h-8 text-sm hover:bg-accent hover:text-accent-foreground",
+                                                    "flex items-center gap-2 overflow-hidden rounded-md p-2.5 text-left text-sm outline-none transition-[width,height,padding] hover:bg-accent hover:text-interaction-blue focus-visible:ring-2 active:bg-accent active:text-interaction-blue disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>svg]:size-4",
+                                                    "h-8 text-sm hover:bg-accent hover:text-interaction-blue",
                                                     isActive ? "text-foreground bg-accent" : "text-foreground/70"
                                                 )}>
                                                 {item.icon && <item.icon />}
@@ -84,6 +85,7 @@ export function AppHeader() {
                     </div>
                     <nav className="flex items-center gap-1">
                         <PWAInstallButton />
+                        <ModeToggle />
                         <a
                             href={appConfig.github.url}
                             title={appConfig.github.title}

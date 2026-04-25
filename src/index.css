@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
@@ -29,6 +29,17 @@
   --border: #d9d9dd;
   --input: #d9d9dd;
   --ring: #9b60aa;
+
+  /* Design system brand tokens */
+  --interaction-blue: #1863dc;
+  --near-black: #212121;
+  --deep-dark: #17171c;
+  --muted-slate: #93939f;
+  --border-cool: #d9d9dd;
+  --lightest-gray: #f2f2f2;
+  --snow: #fafafa;
+  --focus-purple: #9b60aa;
+
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -83,6 +94,12 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Font family utilities: font-display, font-body, font-mono */
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -101,6 +118,13 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
+  /* Brand color utilities: text-interaction-blue, bg-interaction-blue, etc. */
+  --color-interaction-blue: var(--interaction-blue);
+  --color-focus-purple: var(--focus-purple);
+  --color-muted-slate: var(--muted-slate);
+  --color-border-cool: var(--border-cool);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -120,8 +144,40 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Display font for all headings — negative tracking creates the Cohere signature density */
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+  }
+
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
   }
 }
