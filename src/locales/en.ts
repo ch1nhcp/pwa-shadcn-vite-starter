@@ -25,12 +25,63 @@ const en = {
   },
   dashboard: {
     title: 'Dashboard',
-    cardTitle: 'React Shadcn Starter',
-    cardDescription: 'React + Vite + TypeScript template for building apps with shadcn/ui.',
-    posts: 'Posts (Zustand Async Demo)',
     refresh: 'Refresh',
     clear: 'Clear',
     error: 'Error',
+    hero: {
+      heading: 'PWA Shadcn Vite Starter',
+      subheading: 'A production-ready template combining React 19, Vite 6, TypeScript, Tailwind CSS v4, and shadcn/ui — with PWA support, dark mode, and EN/VI i18n out of the box.',
+      viewOnGithub: 'View on GitHub',
+      viewDesignSystem: 'Design System',
+    },
+    techStack: {
+      label: 'Tech Stack',
+    },
+    featuresLabel: 'Features',
+    features: {
+      pwa: {
+        title: 'PWA Ready',
+        desc: 'Service worker via Vite PWA. Offline support, installable on desktop and mobile, and update prompts.',
+      },
+      theme: {
+        title: 'Dark Mode',
+        desc: 'Light, dark, and system themes via CSS variables. Persisted to localStorage and toggled from the header.',
+      },
+      i18n: {
+        title: 'Multilanguage',
+        desc: 'EN and VI locales with react-i18next. Language detected from browser and persisted to localStorage.',
+      },
+      design: {
+        title: 'Design System',
+        desc: 'Cohere-inspired tokens: Space Grotesk, Inter, 22px radius, Interaction Blue — documented in /design-system.',
+      },
+      state: {
+        title: 'State Management',
+        desc: 'Zustand store with async actions. Demonstrates fetching, loading, error, and reset patterns.',
+      },
+      forms: {
+        title: 'Form Handling',
+        desc: 'React Hook Form with Zod schema validation. Type-safe, accessible, and integrated with shadcn/ui inputs.',
+      },
+      router: {
+        title: 'File-based Routing',
+        desc: 'React Router v7 with nested layouts. Pages grouped under a dropdown nav with active link highlighting.',
+      },
+      types: {
+        title: 'Strict TypeScript',
+        desc: 'Strict mode enabled. Path aliases, typed stores, typed i18n, and zero implicit any throughout.',
+      },
+    },
+    demo: {
+      label: 'Live Demo',
+      title: 'Posts — Zustand Async Store',
+      andMore: '+{{count}} more posts',
+    },
+    cta: {
+      title: 'Start building with this template',
+      desc: 'Clone, customize, and ship your next idea fast.',
+      action: 'Use this template',
+    },
   },
   designSystem: {
     title: 'Design System',
