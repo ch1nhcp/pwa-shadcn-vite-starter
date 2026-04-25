@@ -12,8 +12,8 @@ export default function Router() {
     return (
         <Routes>
             <Route element={<AppLayout />}>
-                <Route path="" element={<DesignSystem />} />
-                <Route path="dashboard" element={<Dashboard />} />
+                <Route path="" element={<Dashboard />} />
+                <Route path="pages/design-system" element={<DesignSystem />} />
                 <Route path="pages">
                     <Route path="sample" element={<Sample />} />
                     <Route path="contact" element={<ContactForm />} />

@@ -2,6 +2,7 @@ import {
     CircleAlert,
     Files,
     Gauge,
+    Layers,
     LucideIcon,
     Smartphone,
 } from 'lucide-react'
@@ -23,8 +24,13 @@ export const mainMenu: MenuType = [
         items: [
             {
                 title: 'nav.dashboard',
-                url: '/dashboard',
+                url: '/',
                 icon: Gauge,
+            },
+            {
+                title: 'nav.designSystem',
+                url: '/pages/design-system',
+                icon: Layers,
             },
             {
                 title: 'nav.samplePage',

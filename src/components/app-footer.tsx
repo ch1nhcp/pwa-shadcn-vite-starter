@@ -10,10 +10,6 @@ export function AppFooter() {
                 {t('footer.builtBy')}{' '}
                 <a href={appConfig.author.url} target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4">
                     {appConfig.author.name}
-                </a>.{' '}
-                {t('footer.sourceCodeOn')}{' '}
-                <a href={appConfig.github.url} target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4">
-                    GitHub
                 </a>.
             </p>
         </footer>

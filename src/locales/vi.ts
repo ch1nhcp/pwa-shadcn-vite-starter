@@ -4,6 +4,7 @@ const vi: Translations = {
   nav: {
     pages: 'Trang',
     dashboard: 'Bảng điều khiển',
+    designSystem: 'Hệ thống thiết kế',
     samplePage: 'Trang mẫu',
     contactForm: 'Biểu mẫu liên hệ',
     comingSoon: 'Sắp ra mắt',
@@ -27,12 +28,63 @@ const vi: Translations = {
   },
   dashboard: {
     title: 'Bảng điều khiển',
-    cardTitle: 'React Shadcn Starter',
-    cardDescription: 'Template React + Vite + TypeScript để xây dựng ứng dụng với shadcn/ui.',
-    posts: 'Bài viết (Demo Zustand Async)',
     refresh: 'Làm mới',
     clear: 'Xóa',
     error: 'Lỗi',
+    hero: {
+      heading: 'PWA Shadcn Vite Starter',
+      subheading: 'Template sẵn sàng cho production, kết hợp React 19, Vite 6, TypeScript, Tailwind CSS v4 và shadcn/ui — tích hợp sẵn PWA, chế độ tối, và đa ngôn ngữ EN/VI.',
+      viewOnGithub: 'Xem trên GitHub',
+      viewDesignSystem: 'Hệ thống thiết kế',
+    },
+    techStack: {
+      label: 'Công nghệ sử dụng',
+    },
+    featuresLabel: 'Tính năng',
+    features: {
+      pwa: {
+        title: 'Hỗ trợ PWA',
+        desc: 'Service worker qua Vite PWA. Hỗ trợ offline, cài đặt trên máy tính và điện thoại, thông báo cập nhật.',
+      },
+      theme: {
+        title: 'Chế độ tối',
+        desc: 'Giao diện sáng, tối và theo hệ thống qua biến CSS. Lưu vào localStorage và chuyển đổi từ thanh tiêu đề.',
+      },
+      i18n: {
+        title: 'Đa ngôn ngữ',
+        desc: 'Ngôn ngữ EN và VI với react-i18next. Tự động nhận diện ngôn ngữ từ trình duyệt và lưu vào localStorage.',
+      },
+      design: {
+        title: 'Hệ thống thiết kế',
+        desc: 'Token lấy cảm hứng từ Cohere: Space Grotesk, Inter, bo góc 22px, Interaction Blue — được tài liệu hóa tại /design-system.',
+      },
+      state: {
+        title: 'Quản lý trạng thái',
+        desc: 'Zustand store với hành động bất đồng bộ. Minh họa các mẫu fetch, loading, lỗi và reset.',
+      },
+      forms: {
+        title: 'Xử lý biểu mẫu',
+        desc: 'React Hook Form với xác thực schema Zod. An toàn kiểu, có thể truy cập và tích hợp với shadcn/ui.',
+      },
+      router: {
+        title: 'Điều hướng',
+        desc: 'React Router v7 với layout lồng nhau. Các trang nhóm trong menu dropdown với highlight liên kết hiện tại.',
+      },
+      types: {
+        title: 'TypeScript nghiêm ngặt',
+        desc: 'Chế độ strict được bật. Path aliases, typed store, typed i18n và không có any ngầm định.',
+      },
+    },
+    demo: {
+      label: 'Demo trực tiếp',
+      title: 'Bài viết — Zustand Async Store',
+      andMore: '+{{count}} bài viết nữa',
+    },
+    cta: {
+      title: 'Bắt đầu xây dựng với template này',
+      desc: 'Clone, tùy chỉnh và ra mắt ý tưởng tiếp theo của bạn nhanh chóng.',
+      action: 'Dùng template này',
+    },
   },
   designSystem: {
     title: 'Hệ thống thiết kế',
