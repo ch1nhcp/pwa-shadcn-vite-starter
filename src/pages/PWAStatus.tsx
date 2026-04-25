@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { Download, RefreshCw, Shield, Smartphone, Wifi, WifiOff, Zap } from "lucide-react"
 import { PageHeader, PageHeaderHeading, PageHeaderDescription } from "@/components/page-header"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -48,6 +49,7 @@ export default function PWAStatus() {
   const { canInstall, isInstalled, promptInstall } = useInstallPrompt()
   const isOnline = useOnlineStatus()
   const { caches, refresh: refreshCaches } = useCacheInfo()
+  const { t } = useTranslation()
 
   const swSupported = "serviceWorker" in navigator
   const totalCached = caches.reduce((sum, c) => sum + c.count, 0)
@@ -55,9 +57,9 @@ export default function PWAStatus() {
   return (
     <>
       <PageHeader>
-        <PageHeaderHeading>PWA Status</PageHeaderHeading>
+        <PageHeaderHeading>{t('pwa.title')}</PageHeaderHeading>
         <PageHeaderDescription>
-          Service worker, caching, and install state for this app.
+          {t('pwa.description')}
         </PageHeaderDescription>
       </PageHeader>
 
@@ -66,18 +68,16 @@ export default function PWAStatus() {
         <Card>
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Network</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground">{t('pwa.network')}</CardTitle>
               {isOnline
                 ? <Wifi className="size-4 text-green-500" />
                 : <WifiOff className="size-4 text-destructive" />}
             </div>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold">{isOnline ? "Online" : "Offline"}</p>
+            <p className="text-2xl font-bold">{isOnline ? t('pwa.online') : t('pwa.offline')}</p>
             <p className="mt-1 text-xs text-muted-foreground">
-              {isOnline
-                ? "Connected — live data will be fetched."
-                : "No connection — cached data is served."}
+              {isOnline ? t('pwa.onlineDesc') : t('pwa.offlineDesc')}
             </p>
           </CardContent>
         </Card>
@@ -86,20 +86,20 @@ export default function PWAStatus() {
         <Card>
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Service Worker</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground">{t('pwa.serviceWorker')}</CardTitle>
               <Shield className="size-4 text-primary" />
             </div>
           </CardHeader>
           <CardContent>
             <p className="text-2xl font-bold">
-              {!swSupported ? "Unsupported" : offlineReady ? "Active" : "Registering"}
+              {!swSupported ? t('pwa.unsupported') : offlineReady ? t('pwa.active') : t('pwa.registering')}
             </p>
             <div className="mt-2 flex flex-wrap gap-1.5">
-              <StatusBadge ok={swSupported} label={swSupported ? "Supported" : "No SW"} />
-              <StatusBadge ok={offlineReady} label={offlineReady ? "Offline ready" : "Not cached"} />
+              <StatusBadge ok={swSupported} label={swSupported ? t('pwa.supported') : t('pwa.noSW')} />
+              <StatusBadge ok={offlineReady} label={offlineReady ? t('pwa.offlineReady') : t('pwa.notCached')} />
               {needRefresh && (
                 <Badge variant="outline" className="text-xs border-amber-400 text-amber-600">
-                  Update pending
+                  {t('pwa.updatePending')}
                 </Badge>
               )}
             </div>
@@ -110,20 +110,20 @@ export default function PWAStatus() {
         <Card>
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Installation</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground">{t('pwa.installation')}</CardTitle>
               <Smartphone className="size-4 text-primary" />
             </div>
           </CardHeader>
           <CardContent>
             <p className="text-2xl font-bold">
-              {isInstalled ? "Installed" : canInstall ? "Available" : "Not available"}
+              {isInstalled ? t('pwa.installed') : canInstall ? t('pwa.available') : t('pwa.notAvailable')}
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
               {isInstalled
-                ? "Running as a standalone app."
+                ? t('pwa.installedDesc')
                 : canInstall
-                  ? "Can be installed to your device."
-                  : "Install not available in this browser/context."}
+                  ? t('pwa.canInstallDesc')
+                  : t('pwa.notAvailableDesc')}
             </p>
           </CardContent>
         </Card>
@@ -136,29 +136,31 @@ export default function PWAStatus() {
             <div>
               <CardTitle className="flex items-center gap-2">
                 <Zap className="size-4" />
-                Cache Storage
+                {t('pwa.cacheStorage')}
               </CardTitle>
               <CardDescription>
-                {totalCached} resource{totalCached !== 1 ? "s" : ""} cached across {caches.length} cache{caches.length !== 1 ? "s" : ""}
+                {t('pwa.resource_other', { count: totalCached, caches: caches.length })}
               </CardDescription>
             </div>
             <Button variant="outline" size="sm" onClick={refreshCaches}>
               <RefreshCw className="size-3.5" />
-              Refresh
+              {t('pwa.refresh')}
             </Button>
           </div>
         </CardHeader>
         <CardContent>
           {caches.length === 0 ? (
             <p className="text-sm text-muted-foreground">
-              {swSupported ? "No caches found. Build and serve in production mode to populate caches." : "Cache API not supported in this browser."}
+              {swSupported ? t('pwa.noCaches') : t('pwa.cacheApiUnsupported')}
             </p>
           ) : (
             <div className="divide-y">
               {caches.map((c) => (
                 <div key={c.name} className="flex items-center justify-between py-2.5">
                   <span className="text-sm font-mono text-muted-foreground truncate pr-4">{c.name}</span>
-                  <Badge variant="secondary" className="shrink-0">{c.count} item{c.count !== 1 ? "s" : ""}</Badge>
+                  <Badge variant="secondary" className="shrink-0">
+                    {t('pwa.item_other', { count: c.count })}
+                  </Badge>
                 </div>
               ))}
             </div>
@@ -170,25 +172,25 @@ export default function PWAStatus() {
       {(needRefresh || canInstall) && (
         <Card className="mt-4">
           <CardHeader>
-            <CardTitle>Actions</CardTitle>
-            <CardDescription>Available actions based on current PWA state.</CardDescription>
+            <CardTitle>{t('pwa.actions')}</CardTitle>
+            <CardDescription>{t('pwa.actionsDesc')}</CardDescription>
           </CardHeader>
           <CardContent className="flex flex-wrap gap-3">
             {needRefresh && (
               <Button onClick={() => updateServiceWorker(true)}>
                 <RefreshCw className="size-4" />
-                Apply update &amp; reload
+                {t('pwa.applyUpdate')}
               </Button>
             )}
             {needRefresh && (
               <Button variant="ghost" onClick={close}>
-                Dismiss update
+                {t('pwa.dismissUpdate')}
               </Button>
             )}
             {canInstall && (
               <Button variant="outline" onClick={promptInstall}>
                 <Download className="size-4" />
-                Install app
+                {t('pwa.installApp')}
               </Button>
             )}
           </CardContent>

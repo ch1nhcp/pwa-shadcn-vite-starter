@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -11,14 +12,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { PageHeader, PageHeaderHeading } from '@/components/page-header'
 import { useActiveSection } from '@/hooks/use-active-section'
 
-const SECTIONS = [
-  { id: 'colors', label: 'Colors' },
-  { id: 'typography', label: 'Typography' },
-  { id: 'buttons', label: 'Buttons' },
-  { id: 'cards', label: 'Cards' },
-  { id: 'forms', label: 'Forms' },
-  { id: 'feedback', label: 'Feedback' },
-]
+const SECTION_IDS = ['colors', 'typography', 'buttons', 'cards', 'forms', 'feedback'] as const
 
 const PALETTE = [
   { name: 'Cohere Black', hex: '#000000', bg: 'bg-black' },
@@ -51,7 +45,13 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 export default function DesignSystem() {
-  const activeId = useActiveSection(SECTIONS.map((s) => s.id))
+  const activeId = useActiveSection(SECTION_IDS as unknown as string[])
+  const { t } = useTranslation()
+
+  const sections = SECTION_IDS.map((id) => ({
+    id,
+    label: t(`designSystem.sections.${id}`),
+  }))
 
   return (
     <TooltipProvider>
@@ -65,10 +65,10 @@ export default function DesignSystem() {
             lineHeight: 1,
           }}
         >
-          Design System
+          {t('designSystem.title')}
         </PageHeaderHeading>
         <p className="text-sm text-muted-foreground mt-2">
-          Cohere-inspired components · Space Grotesk · Inter · 22px card radius
+          {t('designSystem.subtitle')}
         </p>
       </PageHeader>
 
@@ -77,10 +77,10 @@ export default function DesignSystem() {
         <aside className="hidden lg:block w-40 flex-shrink-0">
           <div className="sticky top-4">
             <p className="text-xs tracking-widest uppercase text-muted-foreground font-mono mb-3">
-              On this page
+              {t('designSystem.onThisPage')}
             </p>
             <nav className="flex flex-col gap-1">
-              {SECTIONS.map((s) => (
+              {sections.map((s) => (
                 <a
                   key={s.id}
                   href={`#${s.id}`}
@@ -102,8 +102,8 @@ export default function DesignSystem() {
 
           {/* 01 — Colors */}
           <section id="colors">
-            <SectionLabel>01 — Colors</SectionLabel>
-            <SectionTitle>Palette</SectionTitle>
+            <SectionLabel>01 — {t('designSystem.sections.colors')}</SectionLabel>
+            <SectionTitle>{t('designSystem.palette')}</SectionTitle>
             <div className="flex flex-wrap gap-3">
               {PALETTE.map((swatch) => (
                 <div key={swatch.hex} className="w-20">
@@ -121,8 +121,8 @@ export default function DesignSystem() {
 
           {/* 02 — Typography */}
           <section id="typography">
-            <SectionLabel>02 — Typography</SectionLabel>
-            <SectionTitle>Type Scale</SectionTitle>
+            <SectionLabel>02 — {t('designSystem.sections.typography')}</SectionLabel>
+            <SectionTitle>{t('designSystem.typeScale')}</SectionTitle>
             <div className="space-y-5">
               <div className="flex items-baseline gap-6">
                 <span className="text-xs font-mono text-muted-foreground w-36 flex-shrink-0">
@@ -186,8 +186,8 @@ export default function DesignSystem() {
 
           {/* 03 — Buttons */}
           <section id="buttons">
-            <SectionLabel>03 — Buttons</SectionLabel>
-            <SectionTitle>Variants &amp; Sizes</SectionTitle>
+            <SectionLabel>03 — {t('designSystem.sections.buttons')}</SectionLabel>
+            <SectionTitle>{t('designSystem.variantsSizes')}</SectionTitle>
             <div className="space-y-4">
               <div>
                 <p className="text-xs text-muted-foreground mb-2">Variants</p>
@@ -218,8 +218,8 @@ export default function DesignSystem() {
 
           {/* 04 — Cards & Containers */}
           <section id="cards">
-            <SectionLabel>04 — Cards &amp; Containers</SectionLabel>
-            <SectionTitle>22px Radius System</SectionTitle>
+            <SectionLabel>04 — {t('designSystem.sections.cards')}</SectionLabel>
+            <SectionTitle>{t('designSystem.radiusSystem')}</SectionTitle>
             <div className="flex flex-wrap gap-4 mb-6">
               <Card className="w-52 rounded-[22px]">
                 <CardHeader>
@@ -264,8 +264,8 @@ export default function DesignSystem() {
 
           {/* 05 — Forms */}
           <section id="forms">
-            <SectionLabel>05 — Forms</SectionLabel>
-            <SectionTitle>Inputs &amp; Controls</SectionTitle>
+            <SectionLabel>05 — {t('designSystem.sections.forms')}</SectionLabel>
+            <SectionTitle>{t('designSystem.inputsControls')}</SectionTitle>
             <div className="max-w-sm space-y-4">
               <div className="space-y-1.5">
                 <Label htmlFor="ds-email">Email address</Label>
@@ -287,8 +287,8 @@ export default function DesignSystem() {
 
           {/* 06 — Feedback & Overlays */}
           <section id="feedback">
-            <SectionLabel>06 — Feedback &amp; Overlays</SectionLabel>
-            <SectionTitle>Badges, Avatars, Skeletons, Tooltips</SectionTitle>
+            <SectionLabel>06 — {t('designSystem.sections.feedback')}</SectionLabel>
+            <SectionTitle>{t('designSystem.feedbackOverlays')}</SectionTitle>
             <div className="space-y-6">
               <div>
                 <p className="text-xs text-muted-foreground mb-2">Badges</p>

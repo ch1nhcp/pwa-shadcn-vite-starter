@@ -1,4 +1,5 @@
 import { Link, NavLink, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { mainMenu } from '@/config/menu'
 import { cn } from '@/lib/utils'
 import {
@@ -18,9 +19,11 @@ import { appConfig, baseUrl } from '@/config/app'
 import GitHub from './icons/github'
 import { PWAInstallButton } from './pwa-install-prompt'
 import { ModeToggle } from './mode-toggle'
+import { LanguageSwitcher } from './language-switcher'
 
 export function AppHeader() {
     const location = useLocation()
+    const { t } = useTranslation()
 
     return (
         <header className="bg-background sticky top-0 z-50 border-b">
@@ -48,7 +51,7 @@ export function AppHeader() {
                                                     isActive ? "text-foreground bg-accent" : "text-foreground/70"
                                                 )}>
                                                 {item.icon && <item.icon />}
-                                                <span className='font-medium'>{item.title}</span>
+                                                <span className='font-medium'>{t(item.title)}</span>
                                                 <ChevronDown className='!size-3 -ml-1' />
                                             </NavLink>
                                         </DropdownMenuTrigger>
@@ -61,7 +64,7 @@ export function AppHeader() {
                                                             'cursor-pointer',
                                                             subItem.url === location.pathname && 'bg-muted'
                                                         )}>
-                                                        {subItem.title}
+                                                        {t(subItem.title)}
                                                     </NavLink>
                                                 </DropdownMenuItem>
                                             ))}
@@ -72,12 +75,12 @@ export function AppHeader() {
                                         key={index}
                                         to={item.url}
                                         className={({ isActive }) => cn(
-                                            "flex items-center gap-2 overflow-hidden rounded-md p-2.5 text-left text-sm outline-none transition-[width,height,padding] hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 active:bg-accent active:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>svg]:size-4",
-                                            "h-8 text-sm hover:bg-accent hover:text-accent-foreground",
+                                            "flex items-center gap-2 overflow-hidden rounded-md p-2.5 text-left text-sm outline-none transition-[width,height,padding] hover:bg-accent hover:text-interaction-blue focus-visible:ring-2 active:bg-accent active:text-interaction-blue disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>svg]:size-4",
+                                            "h-8 text-sm hover:bg-accent hover:text-interaction-blue",
                                             isActive ? "text-foreground bg-accent" : "text-foreground/70"
                                         )}>
                                         {item.icon && <item.icon />}
-                                        <span className='font-medium'>{item.title}</span>
+                                        <span className='font-medium'>{t(item.title)}</span>
                                     </NavLink>
                                 )
                             ))}
@@ -85,6 +88,7 @@ export function AppHeader() {
                     </div>
                     <nav className="flex items-center gap-1">
                         <PWAInstallButton />
+                        <LanguageSwitcher />
                         <ModeToggle />
                         <a
                             href={appConfig.github.url}
