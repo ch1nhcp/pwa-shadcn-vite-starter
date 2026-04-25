@@ -101,7 +101,7 @@ const en = {
   notFound: {
     title: '404 — Page Not Found',
   },
-} as const
+}
 
 export default en
 export type Translations = typeof en
