@@ -4,6 +4,7 @@ const vi: Translations = {
   nav: {
     pages: 'Trang',
     dashboard: 'Bảng điều khiển',
+    designSystem: 'Hệ thống thiết kế',
     samplePage: 'Trang mẫu',
     contactForm: 'Biểu mẫu liên hệ',
     comingSoon: 'Sắp ra mắt',

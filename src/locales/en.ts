@@ -2,6 +2,7 @@ const en = {
   nav: {
     pages: 'Pages',
     dashboard: 'Dashboard',
+    designSystem: 'Design System',
     samplePage: 'Sample Page',
     contactForm: 'Contact Form',
     comingSoon: 'Coming Soon',
