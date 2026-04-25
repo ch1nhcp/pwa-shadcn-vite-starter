@@ -12,13 +12,13 @@ export default function Router() {
     return (
         <Routes>
             <Route element={<AppLayout />}>
-                <Route path="" element={<Dashboard />} />
+                <Route path="" element={<DesignSystem />} />
+                <Route path="dashboard" element={<Dashboard />} />
                 <Route path="pages">
                     <Route path="sample" element={<Sample />} />
                     <Route path="contact" element={<ContactForm />} />
                     <Route path="feature" element={<ComingSoon />} />
                     <Route path="pwa" element={<PWAStatus />} />
-                    <Route path="design-system" element={<DesignSystem />} />
                 </Route>
                 <Route path="*" element={<NotMatch />} />
             </Route>

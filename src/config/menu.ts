@@ -17,15 +17,15 @@ type MenuType = MenuItemType[]
 
 export const mainMenu: MenuType = [
     {
-        title: 'Dashboard',
-        url: '/',
-        icon: Gauge
-    },
-    {
         title: 'Pages',
         url: '/pages',
         icon: Files,
         items: [
+            {
+                title: 'Dashboard',
+                url: '/dashboard',
+                icon: Gauge,
+            },
             {
                 title: 'Sample Page',
                 url: '/pages/sample',
@@ -39,19 +39,15 @@ export const mainMenu: MenuType = [
                 url: '/pages/feature',
             },
             {
-                title: 'Design System',
-                url: '/pages/design-system',
+                title: 'PWA Status',
+                url: '/pages/pwa',
+                icon: Smartphone,
+            },
+            {
+                title: 'Error',
+                url: '/404',
+                icon: CircleAlert,
             },
         ]
-    },
-    {
-        title: 'PWA Status',
-        url: '/pages/pwa',
-        icon: Smartphone,
-    },
-    {
-        title: 'Error',
-        url: '/404',
-        icon: CircleAlert,
     },
 ]
