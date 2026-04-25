@@ -2,6 +2,7 @@ import {
     ChevronRight,
     Menu,
 } from "lucide-react"
+import { useTranslation } from 'react-i18next'
 import { mainMenu } from '@/config/menu'
 import { Link, NavLink } from 'react-router-dom'
 import { Button } from "@/components/ui/button"
@@ -31,6 +32,8 @@ import {
 import { cn } from '@/lib/utils'
 
 export function AppSidebar() {
+    const { t } = useTranslation()
+
     return (
         <SidebarProvider>
             <div className="flex items-center md:hidden">
@@ -60,9 +63,9 @@ export function AppSidebar() {
                                                         className="group/collapsible">
                                                         <SidebarMenuItem>
                                                             <CollapsibleTrigger asChild>
-                                                                <SidebarMenuButton tooltip={item.title}>
+                                                                <SidebarMenuButton tooltip={t(item.title)}>
                                                                     {item.icon && <item.icon />}
-                                                                    <span>{item.title}</span>
+                                                                    <span>{t(item.title)}</span>
                                                                     <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                                                                 </SidebarMenuButton>
                                                             </CollapsibleTrigger>
@@ -77,7 +80,7 @@ export function AppSidebar() {
                                                                                         'cursor-pointer',
                                                                                         subItem.url === location.pathname && 'bg-muted'
                                                                                     )}>
-                                                                                    <span>{subItem.title}</span>
+                                                                                    <span>{t(subItem.title)}</span>
                                                                                 </NavLink>
                                                                             </SidebarMenuSubButton>
                                                                         </SidebarMenuSubItem>
@@ -96,7 +99,7 @@ export function AppSidebar() {
                                                                     item.url === location.pathname && 'bg-muted'
                                                                 )}>
                                                                 {item.icon && <item.icon className="!" />}
-                                                                <span>{item.title}</span>
+                                                                <span>{t(item.title)}</span>
                                                             </Link>
                                                         </SidebarMenuButton>
                                                     </SidebarMenuItem>

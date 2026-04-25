@@ -17,34 +17,34 @@ type MenuType = MenuItemType[]
 
 export const mainMenu: MenuType = [
     {
-        title: 'Pages',
+        title: 'nav.pages',
         url: '/pages',
         icon: Files,
         items: [
             {
-                title: 'Dashboard',
+                title: 'nav.dashboard',
                 url: '/dashboard',
                 icon: Gauge,
             },
             {
-                title: 'Sample Page',
+                title: 'nav.samplePage',
                 url: '/pages/sample',
             },
             {
-                title: 'Contact Form',
+                title: 'nav.contactForm',
                 url: '/pages/contact',
             },
             {
-                title: 'Coming Soon',
+                title: 'nav.comingSoon',
                 url: '/pages/feature',
             },
             {
-                title: 'PWA Status',
+                title: 'nav.pwaStatus',
                 url: '/pages/pwa',
                 icon: Smartphone,
             },
             {
-                title: 'Error',
+                title: 'nav.error',
                 url: '/404',
                 icon: CircleAlert,
             },
